@@ -32,6 +32,7 @@ export default function Home() {
 
   return (
     <main className="main">
+      hello world
       <button onClick={() => changeTheme()}>Change Theme</button>
     </main>
   );
