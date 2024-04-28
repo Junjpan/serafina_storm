@@ -9,7 +9,12 @@ const HomePage = () => {
         <h1 className={`landingpage__title ${pacifico.className}`}>
           STORM GALLERY WALK
         </h1>
-        <Image src={Logo} alt="Storm Sims" className="landingpage__image" />
+        <Image
+          src={Logo}
+          alt="Storm Sims"
+          className="landingpage__image"
+          unoptimized
+        />
 
         <button>Enter</button>
       </div>
