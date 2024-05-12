@@ -1,6 +1,8 @@
 .landingpage {
+  position: relative;
   &__title {
-    font-size: 3.2rem;
+    font-size: 4.8rem;
+    word-spacing: 0.5rem;
   }
   &__content {
     margin-inline: auto;
@@ -10,11 +12,132 @@
     align-items: center;
     height: 100vh;
     width: 50%;
-    gap: 2rem;
+    gap: 3rem;
+    opacity: 0;
+    animation: appear 2s linear 2s forwards;
   }
 
   &__image {
     width: 32rem;
     height: 32rem;
+  }
+
+  @media screen and (max-width: 480px) {
+    &__title {
+      font-size: 2.8rem;
+    }
+  }
+}
+
+$star-color: skyblue; //#ffcd3c;
+
+.loader {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  &__container {
+    width: 30rem;
+    height: 30rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transform: rotate(-60deg);
+
+    span {
+      position: absolute;
+      transform-origin: -15rem;
+      transform: translate(10rem, -5rem) rotate(calc(var(--i) * 20deg))
+        scale(calc(var(--i) * 0.2));
+      filter: drop-shadow(0 0 5px $star-color) drop-shadow(0 0 15px $star-color)
+        drop-shadow(0 0 30px $star-color);
+      i {
+        position: relative;
+        color: $star-color;
+        animation: rotate-stars 4.8s linear;
+        animation-delay: calc(var(--i) * -0.1s);
+        animation-iteration-count: 2;
+      }
+      &::before {
+        content: "\f005";
+        position: absolute;
+        font-family: fontAwesome;
+        font-size: 0.75em;
+        color: gray;
+        animation: rotate-particle 4.8s linear;
+        animation-delay: calc(var(--i) * -0.1s);
+        animation-iteration-count: 2;
+      }
+    }
+
+    @media screen and (max-height: 1200px) {
+      span {
+        transform-origin: -13rem;
+        transform: translate(0rem, -5rem) rotate(calc(var(--i) * 20deg))
+          scale(calc(var(--i) * 0.15));
+        filter: drop-shadow(0 0 5px $star-color)
+          drop-shadow(0 0 15px $star-color) drop-shadow(0 0 30px $star-color);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      span {
+        i {
+          animation: none;
+        }
+        &::before {
+          animation: none;
+        }
+      }
+    }
+  }
+}
+
+@keyframes rotate-stars {
+  0% {
+    transform: rotate(0deg) scale(0);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.25);
+  }
+  100% {
+    transform: rotate(360deg) scale(0);
+  }
+}
+
+@keyframes rotate-particle {
+  0% {
+    scale: 1;
+    opacity: 0;
+    rotate: 0deg;
+  }
+  50% {
+    scale: 1;
+    opacity: 1;
+    rotate: 180deg;
+  }
+  100% {
+    scale: 0;
+    opacity: 0;
+    rotate: 360deg;
+    filter: drop-shadow(-150px 0 white) drop-shadow(50px 0 $star-color)
+      drop-shadow(0px -150px white) drop-shadow(0 50px $star-color);
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

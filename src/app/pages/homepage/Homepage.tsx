@@ -1,13 +1,15 @@
 import Logo from "../../../assets/Logo.svg";
 import Image from "next/image";
-import { pacifico } from "../../font";
+import { anton } from "../../font";
+import HomeAnimation from "./HomeAnimation";
+import Home from "@/app/page";
 
 const HomePage = () => {
   return (
     <main className="landingpage">
       <div className="landingpage__content">
-        <h1 className={`landingpage__title ${pacifico.className}`}>
-          STORM GALLERY WALK
+        <h1 className={`landingpage__title ${anton.className}`}>
+          Serafina Sims Gallery
         </h1>
         <Image
           src={Logo}
@@ -18,6 +20,7 @@ const HomePage = () => {
 
         <button>Enter</button>
       </div>
+      <HomeAnimation />
     </main>
   );
 };
