@@ -1,10 +1,14 @@
 // it's a server component
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Caveat_Brush } from "next/font/google";
 import ThemeProvider from "./context/themeContext";
 import "./globals.scss";
 
-const inter = Inter({ subsets: ["latin"] });
+const caveat_brush = Caveat_Brush({
+  style: "normal",
+  subsets: ["latin"],
+  weight: "400",
+});
 
 export const metadata: Metadata = {
   title: "Serafina art gallery",
@@ -25,7 +29,7 @@ export default function RootLayout({
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         ></link>
       </head>
-      <body className={inter.className}>
+      <body suppressHydrationWarning={true} className={caveat_brush.className}>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
