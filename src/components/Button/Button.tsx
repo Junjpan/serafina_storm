@@ -1,21 +1,34 @@
-import React from "react";
+import React, { Fragment } from "react";
 import clsx from "clsx";
+import { loadComponents } from "next/dist/server/load-components";
 
 interface ButtonProp extends React.ComponentPropsWithoutRef<"button"> {
   label: string;
   variant?: "filled" | "outlined" | "text" | "elevated";
-  icon?: React.ReactElement;
-  loading?: boolean;
+  iconComponent?: JSX.Element;
+  loadingComponent?: JSX.Element;
+  isLoading?: boolean;
 }
 const Button: React.FunctionComponent<ButtonProp> = (prop) => {
   const {
     label,
-    loading,
+    isLoading = false,
+    iconComponent,
+    loadingComponent,
     variant = "filled",
     className,
     onClick,
     ...html
   } = prop;
+
+  const renderChildren = (): React.ReactElement => {
+    return (
+      <Fragment>
+        {iconComponent && iconComponent}
+        <span>{label}</span>
+      </Fragment>
+    );
+  };
   return (
     <button
       className={clsx("button", className, {
@@ -26,7 +39,7 @@ const Button: React.FunctionComponent<ButtonProp> = (prop) => {
       })}
       onClick={() => onClick}
     >
-      {label}
+      {isLoading && loadingComponent ? loadingComponent : renderChildren()}
     </button>
   );
 };
