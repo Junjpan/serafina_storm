@@ -29,6 +29,7 @@ const Button: React.FunctionComponent<ButtonProp> = (prop) => {
       </Fragment>
     );
   };
+
   return (
     <button
       className={clsx("button", className, {
@@ -37,7 +38,7 @@ const Button: React.FunctionComponent<ButtonProp> = (prop) => {
         text: variant === "text",
         elevated: variant === "elevated",
       })}
-      onClick={() => onClick}
+      onClick={onClick}
     >
       {isLoading && loadingComponent ? loadingComponent : renderChildren()}
     </button>
