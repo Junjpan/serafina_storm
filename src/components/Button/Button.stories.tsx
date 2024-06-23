@@ -2,6 +2,19 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Button from "./Button";
 import { action } from "@storybook/addon-actions";
 import { variants, ButtonProp } from "./Button";
+import { title } from "process";
+
+// Example icon component
+const Icon = () => (
+  <span role="img" aria-label="icon">
+    🌟
+  </span>
+);
+
+const iconOptions = {
+  None: null,
+  Icon: <Icon />,
+};
 
 const meta = {
   title: "Component/Button",
@@ -10,6 +23,13 @@ const meta = {
   argTypes: {
     variant: { options: variants, control: "select" },
     disabled: { control: "boolean" },
+    loadingComponent: { table: { disable: true } },
+    iconComponent: {
+      description: "you can pass an icon react component",
+      name: "showIconComponent",
+      options: ["hide", "show"],
+      mapping: { show: <Icon />, hide: undefined },
+    },
   },
 } satisfies Meta<typeof Button>;
 
@@ -35,19 +55,29 @@ type Story = StoryObj<typeof meta>;
 //   },
 // };
 
-export const Playground: Story = ({ variant, label, ...props }: ButtonProp) => {
+export const Playground: Story = ({
+  variant,
+  label,
+  iconComponent,
+  ...props
+}: ButtonProp) => {
   return (
     <Button
       label={label}
       onClick={action(label)}
       variant={variant}
+      loadingComponent={<div>Loading...</div>}
+      iconComponent={iconComponent}
       {...props}
     />
   );
 };
 
+//setup default value
 Playground.args = {
   variant: "outlined",
   label: "Click me",
   disabled: false,
+  isLoading: false,
+  iconComponent: undefined,
 };
