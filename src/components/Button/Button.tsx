@@ -37,11 +37,11 @@ const Button: React.FunctionComponent<ButtonProp> = (prop) => {
   return (
     <button
       className={clsx("button", className, {
+        disabled,
         filled: variant === "filled",
         outline: variant === "outlined",
         text: variant === "text",
         elevated: variant === "elevated",
-        disabled,
       })}
       onClick={onClick}
     >
