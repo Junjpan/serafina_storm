@@ -1,10 +1,13 @@
 import React, { Fragment } from "react";
 import clsx from "clsx";
-import { loadComponents } from "next/dist/server/load-components";
 
-interface ButtonProp extends React.ComponentPropsWithoutRef<"button"> {
+export const variants = ["filled", "outlined", "text", "elevated"] as const;
+export type VariantType = (typeof variants)[number];
+
+export interface ButtonProp extends React.ComponentPropsWithoutRef<"button"> {
+  /** This is used for the label name of the button */
   label: string;
-  variant?: "filled" | "outlined" | "text" | "elevated";
+  variant?: VariantType;
   iconComponent?: JSX.Element;
   loadingComponent?: JSX.Element;
   isLoading?: boolean;
@@ -18,6 +21,7 @@ const Button: React.FunctionComponent<ButtonProp> = (prop) => {
     variant = "filled",
     className,
     onClick,
+    disabled,
     ...html
   } = prop;
 
@@ -37,6 +41,7 @@ const Button: React.FunctionComponent<ButtonProp> = (prop) => {
         outline: variant === "outlined",
         text: variant === "text",
         elevated: variant === "elevated",
+        disabled,
       })}
       onClick={onClick}
     >
