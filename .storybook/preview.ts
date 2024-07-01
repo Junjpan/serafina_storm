@@ -1,4 +1,5 @@
 import type { Preview } from "@storybook/react";
+import { themes } from '@storybook/theming';
 import { withThemeByClassName } from "@storybook/addon-styling";
 import "../src/app/globals.scss";
 import '../src/app/page.scss';
@@ -18,12 +19,20 @@ export const decorators = [
 
 const preview: Preview = {
   parameters: {
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
-    },
+    // controls: {
+    //   matchers: {
+    //     color: /(background|color)$/i,
+    //     date: /Date$/i,
+    //   },
+    // },
+    darkMode: {
+      // Override the default dark theme
+      dark: { ...themes.dark, appBg: 'black' },
+      // Override the default light theme
+      light: { ...themes.normal, appBg: 'white' },
+      current: 'light', //storybook-dark-mode by default store all the data in the localstorage, even you change the current value here, if you don't clear the localStorage, it'll still show the original value
+      stylePreview: true
+    }
   },
 
 };
