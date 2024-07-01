@@ -103,6 +103,33 @@
   --neutral-variant-99: #fcfeed;
   --neutral-variant-100: #ffffff;
 
+  --font-size-body-1: 2rem;
+  --font-size-body-2: 1.6rem;
+  --font-size-body-3: 1.4rem;
+  --font-size-body-4: 1.2rem;
+
+  --font-size-display-1: 7.2rem;
+  --font-size-display-2: 6rem;
+  --font-size-display-3: 4.8rem;
+
+  --font-size-heading-1: 4rem;
+  --font-size-heading-2: 3.4rem;
+  --font-size-heading-3: 2.8rem;
+  --font-size-heading-4: 2.4rem;
+  --font-size-heading-5: 2rem;
+
+  --font-weight-body: 400;
+  --font-weight-body-medium: 500;
+  --font-weight-body-bold: 600;
+
+  --font-weight-display: 700;
+  --font-weight-heading: 600;
+
+  --line-height-body: 1.5;
+  --line-height-display: 1.3;
+  --line-height-heading: 1.3;
+}
+:root.light-mode {
   --primary: var(--primary-40); //background
   --surfacetint: var(--primary-50);
   --onprimary: var(--primary-100); //text
@@ -151,34 +178,7 @@
   --surfacecontainer: var(--neutral-94);
   --surfacecontainerhigh: var(--neutral-92);
   --surfacecontainerhighest: var(--neutral-90);
-
-  --font-size-body-1: 2rem;
-  --font-size-body-2: 1.6rem;
-  --font-size-body-3: 1.4rem;
-  --font-size-body-4: 1.2rem;
-
-  --font-size-display-1: 7.2rem;
-  --font-size-display-2: 6rem;
-  --font-size-display-3: 4.8rem;
-
-  --font-size-heading-1: 4rem;
-  --font-size-heading-2: 3.4rem;
-  --font-size-heading-3: 2.8rem;
-  --font-size-heading-4: 2.4rem;
-  --font-size-heading-5: 2rem;
-
-  --font-weight-body: 400;
-  --font-weight-body-medium: 500;
-  --font-weight-body-bold: 600;
-
-  --font-weight-display: 700;
-  --font-weight-heading: 600;
-
-  --line-height-body: 1.5;
-  --line-height-display: 1.3;
-  --line-height-heading: 1.3;
 }
-
 :root.dark-mode {
   --primary: var(--primary-80); //background
   --surfacetint: var(--primary-70);

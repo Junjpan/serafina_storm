@@ -23,7 +23,7 @@ const meta = {
   argTypes: {
     variant: { options: variants, control: "select" },
     disabled: { control: "boolean" },
-    loadingComponent: { table: { disable: true } },
+    loadingComponent: { table: { disable: true } }, // disable:true will hide the loadingComponent showing from the table
     iconComponent: {
       description: "you can pass an icon react component",
       name: "showIconComponent",
