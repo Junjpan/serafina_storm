@@ -12,7 +12,7 @@ export const decorators = [
       light: "light-mode",
       dark: "dark-mode",
     },
-    defaultTheme: "light-mode",
+    defaultTheme: "light",
   }),
 ];
 
@@ -25,6 +25,7 @@ const preview: Preview = {
       },
     },
   },
+
 };
 
 export default preview;
