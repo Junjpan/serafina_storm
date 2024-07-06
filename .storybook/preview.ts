@@ -19,12 +19,12 @@ export const decorators = [
 
 const preview: Preview = {
   parameters: {
-    // controls: {
-    //   matchers: {
-    //     color: /(background|color)$/i,
-    //     date: /Date$/i,
-    //   },
-    // },
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i,
+      },
+    },
     darkMode: {
       // Override the default dark theme
       dark: { ...themes.dark, appBg: 'black' },
