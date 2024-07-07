@@ -2,7 +2,10 @@
 name: "Chromatic Deployment"
 
 # Event for the workflow
-on: push
+on:
+  push:
+    branches:
+      - master # run the job below when every branch merge to master branch
 
 # List of jobs
 jobs:
