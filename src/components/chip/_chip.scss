@@ -1,0 +1,13 @@
+.chip {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  width: max-content;
+  gap: 0.4rem;
+  align-items: center;
+  border-radius: 0.4rem;
+  border: 1px solid var(--onsurfacevariant);
+  &__close {
+    border: none;
+    background-color: transparent;
+  }
+}

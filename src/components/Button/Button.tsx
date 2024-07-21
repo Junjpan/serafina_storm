@@ -5,12 +5,14 @@ export const variants = ["filled", "outlined", "text", "elevated"] as const;
 export type VariantType = (typeof variants)[number];
 
 export interface ButtonProp extends React.ComponentPropsWithoutRef<"button"> {
-  /** This is used for the label name of the button */
-  label: string;
-  variant?: VariantType;
+  /** It is going to be an icon component */
   iconComponent?: JSX.Element;
+  /** This is used for the label name of the button. */
+  label: string;
   loadingComponent?: JSX.Element;
   isLoading?: boolean;
+  /**The variant includes filles, outlined, text, elevated */
+  variant?: VariantType;
 }
 const Button: React.FunctionComponent<ButtonProp> = (prop) => {
   const {

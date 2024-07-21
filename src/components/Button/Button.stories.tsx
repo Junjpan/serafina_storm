@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Button from "./Button";
 import { action } from "@storybook/addon-actions";
 import { variants, ButtonProp } from "./Button";
-import { title } from "process";
 
 // Example icon component
 const Icon = () => (
@@ -11,21 +10,25 @@ const Icon = () => (
   </span>
 );
 
-const iconOptions = {
-  None: null,
-  Icon: <Icon />,
-};
+// const iconOptions = {
+//   None: null,
+//   Icon: <Icon />,
+// };
 
 const meta = {
   title: "Component/Button",
   component: Button,
-  tags: ["autodocs"], //allow automatically add component doc to storybook
+  // tags: ["autodocs"], //allow automatically add component doc to storybook
   argTypes: {
-    variant: { options: variants, control: "select" },
+    variant: {
+      description: "The variant includes filles, outlined, text, elevated",
+      options: variants,
+      control: "select",
+    },
     disabled: { control: "boolean" },
     loadingComponent: { table: { disable: true } }, // disable:true will hide the loadingComponent showing from the table
     iconComponent: {
-      description: "you can pass an icon react component",
+      description: "you can pass an icon react component", // it is going to show in the autodocs
       name: "showIconComponent",
       options: ["hide", "show"],
       mapping: { show: <Icon />, hide: undefined },

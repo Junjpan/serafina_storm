@@ -34,6 +34,7 @@ const preview: Preview = {
       stylePreview: true
     }
   },
+  tags: ['autodocs'],
 
 };
 
