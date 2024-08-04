@@ -42,4 +42,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 If this is a new app. make sure you run `heroku create` first. To change the app name, run `heroku apps:rename newName`.
 
-## [Storybook](https://www.chromatic.com/library?appId=6689ca7199e333f9d3ccb71f&branch=storybook)
+## [Storybook](https://6689ca7199e333f9d3ccb71f-gfriuiujgv.chromatic.com/)
