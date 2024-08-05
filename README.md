@@ -43,3 +43,21 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 If this is a new app. make sure you run `heroku create` first. To change the app name, run `heroku apps:rename newName`.
 
 ## [Storybook](https://master--6689ca7199e333f9d3ccb71f.chromatic.com/)
+This link is updated for every build.
+
+## Storybook to Figma design workflow
+1. Set up github workflows for chromatic update.
+2. Whenever code is merged into the master branch, the Chromatic action will run. This action generates a new Storybook link and requests you to review any component changes before the build can be completed. If the review is not done, the build will remain pending.
+3. There are two ways to render storybook components to Figma file:
+##### Thru story.to.design Figma plugin
+- Provide your Chromatic Storybook link to render the components into your Figma file. Whenever a Storybook component is updated, 
+          use this plugin to re-sync, and the component in the Figma file will also be updated.
+- This plugin also provide local mode for your local storybook, however, it requires to pay $200/month to be able to use this service.
+- Here is the [example](https://www.figma.com/design/zK1G0p1eYw0V7HX7JWNdex/Prototyping-in-Figma?node-id=115-499&t=Wq5vf33JKiMXgTis-1ple)
+           for using story.to.design plugin to create and update components       
+##### Thru Storybook Connect Figma plugin
+- This plugin only work if your component is hosting in chromatic. it's free to use.
+    
+   
+
+  
