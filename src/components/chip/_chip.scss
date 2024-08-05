@@ -1,6 +1,7 @@
 .chip {
-  display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
+  display: flex;
+  flex-direction: row;
+  padding: 0 1rem;
   width: max-content;
   gap: 0.4rem;
   align-items: center;
@@ -9,5 +10,8 @@
   &__close {
     border: none;
     background-color: transparent;
+    padding: 0 0.4rem;
+    font-size: 1.2rem;
+    color: #393a3d;
   }
 }
