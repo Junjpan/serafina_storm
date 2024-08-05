@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>;
 
 const Icon = () => (
   <span role="img" aria-label="icon">
-    ❤️
+    🌟
   </span>
 );
 
