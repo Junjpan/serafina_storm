@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { forwardRef, Fragment } from "react";
 import clsx from "clsx";
 
 export const variants = ["filled", "outlined", "text", "elevated"] as const;
@@ -14,7 +14,7 @@ export interface ButtonProp extends React.ComponentPropsWithoutRef<"button"> {
   /**The variant includes filles, outlined, text, elevated */
   variant?: VariantType;
 }
-const Button: React.FunctionComponent<ButtonProp> = (prop) => {
+const Button = React.forwardRef<HTMLButtonElement, ButtonProp>((props, ref) => {
   const {
     label,
     isLoading = false,
@@ -25,7 +25,7 @@ const Button: React.FunctionComponent<ButtonProp> = (prop) => {
     onClick,
     disabled,
     ...html
-  } = prop;
+  } = props;
 
   const renderChildren = (): React.ReactElement => {
     return (
@@ -46,10 +46,14 @@ const Button: React.FunctionComponent<ButtonProp> = (prop) => {
         elevated: variant === "elevated",
       })}
       onClick={onClick}
+      ref={ref}
+      {...html}
     >
       {isLoading && loadingComponent ? loadingComponent : renderChildren()}
     </button>
   );
-};
+});
+
+Button.displayName = "Button";
 
 export default Button;
