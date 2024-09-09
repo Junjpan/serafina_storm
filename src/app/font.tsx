@@ -1,4 +1,4 @@
-import { Dancing_Script, Pacifico, Caveat_Brush } from "next/font/google";
+import { Dancing_Script, Pacifico, Roboto } from "next/font/google";
 
 export const dancingScript = Dancing_Script({
   weight: ["400", "500", "700"],
@@ -9,4 +9,8 @@ export const dancingScript = Dancing_Script({
 export const pacifico = Pacifico({
   weight: ["400"],
   subsets: ["latin"],
+});
+
+export const roboto = Roboto({
+  weight: ["400", "500", "700", "900"],
 });
