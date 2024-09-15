@@ -1,19 +1,21 @@
 // it's a server component
 import type { Metadata } from "next";
-import { Caveat_Brush, Roboto } from "next/font/google";
+import { Roboto, Open_Sans } from "next/font/google";
 import ThemeProvider from "./context/themeContext";
 import "./globals.scss";
+import { openStdin } from "process";
 
-// const caveat_brush = Caveat_Brush({
-//   style: "normal",
+// const roboto = Roboto({
+//   weight: ["400", "700"],
+//   style: ["normal", "italic"],
 //   subsets: ["latin"],
-//   weight: "400",
+//   display: "swap",
 // });
 
-export const roboto = Roboto({
+const openSans = Open_Sans({
   style: "normal",
-  weight: ["400", "500", "700", "900"],
   subsets: ["latin"],
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -35,7 +37,7 @@ export default function RootLayout({
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         ></link>
       </head>
-      <body suppressHydrationWarning={true} className={roboto.className}>
+      <body suppressHydrationWarning={true} className={openSans.className}>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

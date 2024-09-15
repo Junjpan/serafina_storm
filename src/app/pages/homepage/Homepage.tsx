@@ -8,7 +8,7 @@ const HomePage = () => {
   return (
     <main className="landingpage">
       <div className="landingpage__content">
-        <h1 className={`landingpage__title`}>Serafina Sims Gallery</h1>
+        {/* <h1 className={`landingpage__title`}>Serafina Gallery</h1> */}
         <Image
           src={Logo}
           alt="Storm Sims"

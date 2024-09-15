@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, ReactNode } from "react";
 import * as RadixTooltip from "@radix-ui/react-tooltip";
 
 export const directions = ["left", "right", "bottom", "top"] as const;
@@ -13,23 +13,27 @@ export interface TooltipProps {
   /**
    * Set the tooltip position relative to the trigger component
    */
-  direction: "left" | "right" | "bottom" | "top";
+  direction?: "left" | "right" | "bottom" | "top";
   /**
-   * the distance between the triggerComponent and the tooltip
+   * the distance between the triggerComponent and the tooltip,default is 0
    */
-  sideOffset: number;
+  sideOffset?: number;
   /**
    * The preferred alignment against the trigger. May change when collisions occur.
    */
-  align: "start" | "center" | "end";
+  align?: "start" | "center" | "end";
   /**
    * An offset in pixels from the "start" or "end" alignment options.
    */
-  alignOffset: number;
+  alignOffset?: number;
   /**
    * if the tooltip is open by default
    */
-  defaultOpen: boolean;
+  defaultOpen?: boolean;
+  /**
+   * based on which event to trigger tooltip, by default it's hover
+   */
+  eventType?: "Hover" | "Click";
 }
 
 const Tooltip: React.FunctionComponent<TooltipProps> = ({
@@ -40,26 +44,28 @@ const Tooltip: React.FunctionComponent<TooltipProps> = ({
   defaultOpen = false,
   align = "center",
   alignOffset = 0,
+  eventType = "Hover",
 }) => {
-  /**
-   * if you want to create a tooltip based on the clickevent, we need to pass the below prop to 
-   * the tirggerComponnent, and put the open props the Root 
-   *  const [open, setOpen] = useState(false);
-   * const updatedTriggerComponent = React.cloneElement(triggerComponent, {
-    open,
-    onClick: () => setOpen(!open)
-  });
-   */
+  const [open, setOpen] = useState(defaultOpen);
+
+  const handleClick = eventType === "Click" ? () => setOpen(!open) : undefined;
 
   return (
     <RadixTooltip.TooltipProvider delayDuration={0}>
-      <RadixTooltip.Root defaultOpen={defaultOpen}>
-        <RadixTooltip.Trigger asChild>{triggerComponent}</RadixTooltip.Trigger>
+      <RadixTooltip.Root
+        open={eventType === "Click" ? open : undefined}
+        defaultOpen={defaultOpen}
+      >
+        <RadixTooltip.Trigger asChild>
+          {React.cloneElement(triggerComponent, { onClick: handleClick })}
+        </RadixTooltip.Trigger>
         <RadixTooltip.Portal>
           <RadixTooltip.Content
             side={direction}
             className="tooltip"
-            {...{ sideOffset, align, alignOffset }}
+            sideOffset={sideOffset}
+            align={align}
+            alignOffset={alignOffset}
           >
             {portalContent}
           </RadixTooltip.Content>
@@ -70,7 +76,3 @@ const Tooltip: React.FunctionComponent<TooltipProps> = ({
 };
 
 export default Tooltip;
-
-/**
- * todo: we need to custimize the portalContent for tooltip based on the Figma file
- */
