@@ -55,6 +55,31 @@ Playground.args = {
   alignOffset: 0,
 };
 
-/**
- * todo:customize the controls area
- */
+export const ShowTooltipByClick: Story = ({
+  portalContent,
+  // eventType,
+  // triggerComponent,
+  ...props
+}: TooltipProps) => {
+  return (
+    <div className="display">
+      <Tooltip {...{ portalContent, ...props }} />
+    </div>
+  );
+};
+
+ShowTooltipByClick.args = {
+  portalContent: (
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum ipsam
+      provident iusto ducimus incidunt perferendis consequatur.{" "}
+    </p>
+  ),
+  triggerComponent: (
+    <div role="button" className="link">
+      Learn more
+    </div>
+  ),
+  eventType: "Click",
+  defaultOpen: true,
+};
